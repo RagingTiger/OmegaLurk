@@ -1,21 +1,23 @@
 # base python
-FROM python:3.8
+FROM python:3.9
 
 # set default port
-EXPOSE 8501
+EXPOSE 8484
 
-# set huggingface env
+# set env
+ENV TZ=America/New_York
+ENV DEBIAN_FRONTEND=noninteractive
 ENV HF_HOME=/models/huggingface
 ENV TRANSFORMERS_CACHE=${HF_HOME}/transformers
 
 # create workdir
-WORKDIR /HighLevel
+WORKDIR /OmegaLurk
 
 # copy source
-COPY . /HighLevel
+COPY . /OmegaLurk
 
 # update and pip install
-RUN apt-get update && \
+RUN apt-get update && apt-get install -y tzdata && \
     pip3 install -r requirements.txt
 
 # set command
