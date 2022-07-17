@@ -10,10 +10,10 @@ def ingestor(boards: list[str]):
     # iterate through boards
     for name in boards:
         # get board data
-        b = basc_py4chan.Board(name)
+        data = basc_py4chan.Board(name)
 
         # now get all posts
-        yield b.get_all_threads(expand=True)
+        yield data.get_all_threads(expand=True)
 
 def digestor(board_data: list[list[basc_py4chan.Thread]]):
     # for now just get first board
