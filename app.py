@@ -72,6 +72,15 @@ with st.sidebar:
         ['pol']
     )
 
+    # set ingestion frequency
+    st.header('Ingestion Frequency')
+    ingestion_frequency = st.selectbox(
+        'Select frequency (in hours)',
+        (1, 3, 6, 12, 24),
+        4
+    )
+    ingestion_starttime = st.time_input('Select start time (in millitary time)')
+
 # set title
 st.title('Omega Lurk')
 
