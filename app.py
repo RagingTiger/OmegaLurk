@@ -1,48 +1,23 @@
-import basc_py4chan
 from multiprocessing import Queue, Process
 import streamlit as st
 
 # custom libs
 from packages import constants
+from packages import engine
 
 # funcs
-def ingestor(boards: list[str]):
-    # iterate through boards
-    for name in boards:
-        # get board data
-        data = basc_py4chan.Board(name)
-
-        # now get all posts
-        yield data.get_all_threads(expand=True)
-
-def digestor(board_data: list[list[basc_py4chan.Thread]]):
-    # for now just get first board
-    sample_board = next(board_data)
-
-    # now get first thread
-    sample_thread = next(sample_board)
-
-    # now get first post
-    sample_post = sample_thread.all_posts.pop()
-
-    # return first post
-    return sample_post
-
-def extractor(boards: list[str]):
-    return digestor(ingestor(boards))
-
 def get_process_results(queue, func, **parameters):
     # now run inference and store result in IPC queue
     queue.put(func(**parameters))
 
-def deploy_process(**parameters):
+def deploy_process(func, **parameters):
     # setup process queue
     proc_queue = Queue()
 
     # setup process
     deploy_proc = Process(
         target=get_process_results,
-        args=[proc_queue, extractor],
+        args=[proc_queue, func],
         kwargs=parameters
     )
 
@@ -93,6 +68,7 @@ if demo:
     # start and wait for finish
     with st.spinner('Extracting information ...'):
         extraction_results = deploy_process(
+            engine.extractor,
             boards=boards
         )
         st.write(extraction_results)
