@@ -32,6 +32,14 @@ with st.sidebar:
     )
     ingestion_starttime = st.time_input('Select start time (in millitary time)')
 
+    # set history storage length
+    st.header('History Storage Size')
+    history_size = st.number_input(
+        'Max number of extraction results saved on disk' ,
+        min_value=1,
+        value=4
+    )
+
 # set title
 st.title('Omega Lurk')
 
