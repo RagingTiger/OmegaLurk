@@ -28,7 +28,7 @@ def digestor(board_data: list[list[basc_py4chan.Thread]]):
     # return first post
     return sample_post
 
-def extractor(boards):
+def extractor(boards: list[str]):
     return digestor(ingestor(boards))
 
 def get_process_results(queue, func, **parameters):
