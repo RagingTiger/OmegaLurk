@@ -1,33 +1,9 @@
-from multiprocessing import Queue, Process
 import streamlit as st
 
 # custom libs
 from packages import constants
 from packages import engine
-
-# funcs
-def get_process_results(queue, func, **parameters):
-    # now run inference and store result in IPC queue
-    queue.put(func(**parameters))
-
-def deploy_process(func, **parameters):
-    # setup process queue
-    proc_queue = Queue()
-
-    # setup process
-    deploy_proc = Process(
-        target=get_process_results,
-        args=[proc_queue, func],
-        kwargs=parameters
-    )
-
-    # now start and wait
-    deploy_proc.start()
-    result = proc_queue.get()
-    deploy_proc.join()
-
-    # return contents of queue
-    return result
+from packages import process
 
 # configuring page
 st.set_page_config(
@@ -67,7 +43,7 @@ demo = st.button('Run Demo')
 if demo:
     # start and wait for finish
     with st.spinner('Extracting information ...'):
-        extraction_results = deploy_process(
+        extraction_results = process.deploy(
             engine.extractor,
             boards=boards
         )
