@@ -1,5 +1,5 @@
 # base python
-FROM python:3.9
+FROM python:3.10
 
 # set default port
 EXPOSE 8484
