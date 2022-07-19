@@ -35,7 +35,7 @@ with st.sidebar:
     # set history storage length
     st.header('History Storage Size')
     history_size = st.number_input(
-        'Max number of extraction results saved on disk' ,
+        'Max number of extraction results saved on disk',
         min_value=1,
         value=4
     )

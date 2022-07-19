@@ -5,6 +5,7 @@ import typing
 BoardData = list[basc_py4chan.Thread]
 IngestionGenerator = typing.Generator[BoardData, None, None]
 
+
 def ingestor(boards: list[str]) -> IngestionGenerator:
     # iterate through boards
     for name in boards:
@@ -13,6 +14,7 @@ def ingestor(boards: list[str]) -> IngestionGenerator:
 
         # now get all posts
         yield data.get_all_threads(expand=True)
+
 
 def digestor(board_data: IngestionGenerator) -> basc_py4chan.Post:
     # for now just get first board
@@ -26,6 +28,7 @@ def digestor(board_data: IngestionGenerator) -> basc_py4chan.Post:
 
     # return first post
     return sample_post
+
 
 def extractor(boards: list[str]) -> typing.Any:
     return digestor(ingestor(boards))

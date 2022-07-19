@@ -1,11 +1,13 @@
 import multiprocessing
 import typing
 
+
 def get_process_results(queue: multiprocessing.Queue,
                         func: typing.Callable,
                         **parameters: dict[str, typing.Any]) -> None:
     # now run inference and store result in IPC queue
     queue.put(func(**parameters))
+
 
 def deploy(func: typing.Callable,
            **parameters: dict[str, typing.Any]) -> typing.Any:
