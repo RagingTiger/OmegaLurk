@@ -3,7 +3,7 @@ from packages import process
 
 # tests
 def test_queue():
-    '''Make sure multiprocessing.Queue works as it should'''
+    """Make sure multiprocessing.Queue works as it should."""
     # run deploy func on simple builtin pow func
     results = process.deploy(
         pow,
