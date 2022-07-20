@@ -9,6 +9,7 @@ IngestionGenerator = typing.Generator[BoardData, None, None]
 
 
 def get_board_data(board_names: list[str]) -> BoardGenerator:
+    """Take list of 4chan board names and yield Board objects."""
     # get board object
     for name in board_names:
         # get actual board object
@@ -16,6 +17,7 @@ def get_board_data(board_names: list[str]) -> BoardGenerator:
 
 
 def ingestor(boards: BoardGenerator) -> IngestionGenerator:
+    """Take generator of Board objects and yield lists of Thread objects."""
     # iterate through boards
     for data in boards:
         # now get all posts
