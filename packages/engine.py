@@ -1,17 +1,23 @@
 import basc_py4chan
 import typing
 
+
 # declaring custom types
+BoardGenerator = typing.Generator[basc_py4chan.Board, None, None]
 BoardData = list[basc_py4chan.Thread]
 IngestionGenerator = typing.Generator[BoardData, None, None]
 
 
-def ingestor(boards: list[str]) -> IngestionGenerator:
-    # iterate through boards
-    for name in boards:
-        # get board data
-        data = basc_py4chan.Board(name)
+def get_board_data(board_names: list[str]) -> BoardGenerator:
+    # get board object
+    for name in board_names:
+        # get actual board object
+        yield basc_py4chan.Board(name)
 
+
+def ingestor(boards: BoardGenerator) -> IngestionGenerator:
+    # iterate through boards
+    for data in boards:
         # now get all posts
         yield data.get_all_threads(expand=True)
 
