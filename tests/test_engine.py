@@ -20,7 +20,7 @@ def board_names():
 
 def mock_get_all_threads(self, expand=False) -> engine.BoardData:
     """Mock list of threads i.e. BoardData type."""
-    return list(FakeThread(self.name))
+    return [FakeThread(self.name)]
 
 
 # tests
