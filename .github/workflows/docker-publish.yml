@@ -11,6 +11,9 @@ on:
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   push:
+    paths-ignore:
+      - '.github/workflow/**'
+      - '**/README.md'
     branches: [ master ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
@@ -53,11 +56,11 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          
+
       # Necessary for Multi-Arch images
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-        
+
       # Get buildx ready
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
