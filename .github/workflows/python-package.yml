@@ -6,7 +6,6 @@ name: Python package
 on:
   push:
     paths-ignore:
-      - '.github/workflow/**'
       - '**/README.md'
     branches: [ "master" ]
   pull_request:
