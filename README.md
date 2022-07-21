@@ -1,3 +1,4 @@
+![pytest](https://github.com/RagingTiger/OmegaLurk/actions/workflows/pytest.yml/badge.svg)
 # TL;DR
 4Chan information extraction engine with a [Streamlit](http://streamlit.io)
 interface.
