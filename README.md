@@ -15,6 +15,13 @@ docker run -d \
 Then simply open your browser to `http://localhost:8484` and you
 should see the *streamlit* interface.
 
+## Testing
+Run the *automated tests* locally as follows:
+```
+cd OmegaLurk
+bash tests/run_tests.sh
+```
+
 ## FAQ
 + How to change *time zone*?
   - The default time zone is *America/New_York*, but this can be changed
