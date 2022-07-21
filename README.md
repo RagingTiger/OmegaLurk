@@ -18,8 +18,11 @@ should see the *streamlit* interface.
 ## Testing
 Run the *automated tests* locally as follows:
 ```
-cd OmegaLurk
-bash tests/run_tests.sh
+docker run --rm \
+           --name omegalurk-tests \
+           -it \
+           ghcr.io/ragingtiger/omegalurk:master \
+             bash tests/run_test.sh
 ```
 
 ## FAQ
