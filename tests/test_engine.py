@@ -1,7 +1,5 @@
-import pytest
 import types
 from packages import engine
-from packages import constants
 
 
 # mocking
@@ -10,12 +8,6 @@ class FakeThread(engine.basc_py4chan.Thread):
     def __init__(self, name):
         self.name = name
         self.id = hash(id)
-
-
-@pytest.fixture
-def board_names():
-    """Fixture for returning all 4chan board names."""
-    return constants.BOARDS
 
 
 def mock_get_all_threads(self, expand=False) -> engine.BoardData:
