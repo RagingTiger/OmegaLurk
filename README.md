@@ -1,3 +1,4 @@
+![pytest](https://github.com/RagingTiger/OmegaLurk/actions/workflows/pytest.yml/badge.svg)
 # TL;DR
 4Chan information extraction engine with a [Streamlit](http://streamlit.io)
 interface.
@@ -14,6 +15,16 @@ docker run -d \
 ```
 Then simply open your browser to `http://localhost:8484` and you
 should see the *streamlit* interface.
+
+## Testing
+Run the *automated tests* locally as follows:
+```
+docker run --rm \
+           --name omegalurk-tests \
+           -it \
+           ghcr.io/ragingtiger/omegalurk:master \
+             bash tests/run_test.sh
+```
 
 ## FAQ
 + How to change *time zone*?
