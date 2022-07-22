@@ -1,5 +1,5 @@
 import pytest
-from packages import constants
+from lurk import constants
 
 
 @pytest.fixture

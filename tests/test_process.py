@@ -1,4 +1,4 @@
-from packages import process
+from lurk import process
 
 
 # tests

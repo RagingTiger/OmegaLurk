@@ -1,5 +1,5 @@
 import types
-from packages import engine
+from lurk import engine
 
 
 # mocking
@@ -32,7 +32,7 @@ def test_get_ingestor_return_type(mocker, board_names):
     """Test return type for ingestor function."""
     # time to mock get all threads in ingestor
     mocker.patch(
-        'packages.engine.basc_py4chan.Board.get_all_threads',
+        'lurk.engine.basc_py4chan.Board.get_all_threads',
         mock_get_all_threads
     )
 
