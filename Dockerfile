@@ -1,5 +1,5 @@
 # base python
-FROM python:3.10 AS builder
+FROM python:3.10.5 AS builder
 
 # set default port
 EXPOSE 8484
@@ -17,7 +17,8 @@ WORKDIR /OmegaLurk
 COPY . /OmegaLurk
 
 # update and pip install
-RUN apt-get update && apt-get install -y tzdata && \
+RUN apt-get update && apt-get install -y \
+      tzdata && \
     pip3 install -r requirements.txt
 
 # setup app
@@ -30,7 +31,7 @@ CMD ["streamlit", "run", "app.py"]
 FROM builder AS test
 
 # install testing packages
-RUN pip3 install -r tests/requirements.txt
+RUN bash tests/install_packages.sh
 
 # set test command
 CMD ["bash", "tests/run_tests.sh"]
