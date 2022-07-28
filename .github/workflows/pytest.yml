@@ -7,6 +7,10 @@ on:
   push:
     paths-ignore:
       - '**/README.md'
+      - '**/Dockerfile'
+      - '**/.gitignore'
+      - '**/.dockerignore'
+      - '.github/workflows/docker-publish.yml'
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
