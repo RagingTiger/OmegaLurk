@@ -21,17 +21,19 @@ should see the *streamlit* interface.
 Build the *automated tests* locally as follows (first `cd OmegaLurk`):
 ```
 docker build --target test \
-           -t omegalurk:tests \
-           . \
-           --load
+             -t omegalurk:tests \
+             . \
+             --load
 ```
 Then run tests as follows:
 ```
 docker run --rm \
-           -v $PWD:/OmegaLurk # optional testing changes to codebase on host
+           -v $PWD:/OmegaLurk # optional
            -it
            omegalurk:tests
 ```
+NOTE: The `-v` flag is optional, and is only necessary if you want to develop
+the code locally, and test the changes on your local copy of the source code.
 
 ## FAQ
 + How to change *time zone*?
