@@ -17,13 +17,19 @@ Then simply open your browser to `http://localhost:8484` and you
 should see the *streamlit* interface.
 
 ## Testing
-Run the *automated tests* locally as follows:
+Build the *automated tests* locally as follows (first `cd OmegaLurk`):
+```
+docker build --target test \
+           -t omegalurk:tests \
+           . \
+           --load
+```
+Then run tests as follows:
 ```
 docker run --rm \
-           --name omegalurk-tests \
-           -it \
-           ghcr.io/ragingtiger/omegalurk:master \
-             bash tests/run_test.sh
+           -v $PWD:/OmegaLurk # optional testing changes to codebase on host
+           -it
+           omegalurk:tests
 ```
 
 ## FAQ
