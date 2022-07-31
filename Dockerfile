@@ -4,6 +4,9 @@ FROM python:3.10.5 AS builder
 # set default port
 EXPOSE 8484
 
+# set build cache inline
+ARG BUILDKIT_INLINE_CACHE=1
+
 # set env
 ENV TZ=America/New_York
 ENV DEBIAN_FRONTEND=noninteractive
