@@ -7,7 +7,9 @@ from lurk import process
 
 # configuring page
 st.set_page_config(
-     initial_sidebar_state="collapsed"
+     initial_sidebar_state="collapsed",
+     page_icon=':shark:',
+     page_title='OmegaLurk'
 )
 
 # creating sidebar
