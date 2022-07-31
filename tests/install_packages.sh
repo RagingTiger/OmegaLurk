@@ -1,7 +1,5 @@
 # install python testing packages
-pip install -r tests/requirements.txt
-
-# add chrome browser to sources and install
+pip install -r tests/requirements.txt && \
 if cat tests/requirements.txt | grep -q seleniumbase; then
   apt-get install -y \
     gpg && \
