@@ -1,9 +1,9 @@
 import streamlit as st
 
 # custom libs
-from packages import constants
-from packages import engine
-from packages import process
+from lurk import constants
+from lurk import engine
+from lurk import process
 
 # configuring page
 st.set_page_config(
