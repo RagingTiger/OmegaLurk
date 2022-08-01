@@ -16,6 +16,12 @@ def app_path():
 
 
 @pytest.fixture
+def server_address():
+    """Fixture for Streamlit server adress."""
+    return 'http://127.0.0.1:8501'
+
+
+@pytest.fixture
 def board_names():
     """Fixture for returning all 4chan board names."""
     return constants.BOARDS
