@@ -45,7 +45,14 @@ def streamlit_server(xprocess, app_path):
         logging.info(f'App path: {app_path}')
 
         # command to start process
-        args = ['streamlit', 'run', app_path]
+        args = [
+            'streamlit',
+            'run',
+            app_path,
+            '--logger.level=debug',
+            '--server.fileWatcherType=none',
+            '--client.caching=False'
+        ]
 
     # ensure process is running and return its logfile
     xprocess.ensure("streamlit_app", Starter)
